@@ -1,5 +1,5 @@
 const WEDDING_YEAR = 2026;
-const WEDDING_MONTH = 1; // 12월
+const WEDDING_MONTH = 12; // 12월
 const WEDDING_DAY = 26;
 
 const WEDDING_HOUR = 11;
