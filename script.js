@@ -1,8 +1,8 @@
-const WEDDING_YEAR = 2027;
-const WEDDING_MONTH = 1; // 1월
-const WEDDING_DAY = 1;
+const WEDDING_YEAR = 2026;
+const WEDDING_MONTH = 1; // 12월
+const WEDDING_DAY = 26;
 
-const WEDDING_HOUR = 12;
+const WEDDING_HOUR = 11;
 const WEDDING_MINUTE = 0;
 const WEDDING_DATE = new Date(
   WEDDING_YEAR,
