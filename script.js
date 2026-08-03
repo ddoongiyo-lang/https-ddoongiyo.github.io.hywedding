@@ -47,14 +47,14 @@ function openEnvelope() {
   overlay.style.transition = "opacity 0.8s ease";
   overlay.style.opacity = "0";
   setTimeout(function () {
-    overlay.style.display = "none";
-    mainContent.style.display = "block";
-    window.scrollTo(0, 0);
-    renderKakaoMap();
-    if (bgm) {
-      bgm.play().catch(function () {});
-    }
-  }, 800);
+  overlay.style.display = "none";
+  mainContent.style.display = "block";
+  window.scrollTo(0, 0);
+
+  if (bgm) {
+    bgm.play().catch(function () {});
+  }
+}, 800);
 }
 function toggleBgm() {
   const bgm = document.getElementById("bgm");
