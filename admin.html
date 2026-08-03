@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>방명록 관리자</title>
+
+<style>
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    background:#f8f5f0;
+    padding:30px;
+    color:#333;
+}
+
+.admin-container{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    box-sizing:border-box;
+}
+
+
+button{
+
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    background:#333;
+    color:white;
+
+}
+
+
+.login-btn{
+
+    width:100%;
+
+}
+
+
+.guest-card{
+
+    border-top:1px solid #eee;
+    padding:20px 0;
+
+}
+
+
+.name{
+
+    font-weight:bold;
+    margin-bottom:8px;
+
+}
+
+
+.message{
+
+    line-height:1.5;
+
+}
+
+
+.date{
+
+    font-size:12px;
+    color:#888;
+    margin-top:10px;
+
+}
+
+
+.action button{
+
+    margin-right:8px;
+    margin-top:15px;
+
+}
+
+
+.approve{
+
+    background:#8b6f47;
+
+}
+
+
+.delete{
+
+    background:#999;
+
+}
+
+
+#admin-area{
+
+    display:none;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="admin-container">
+
+
+<h1>💌 방명록 관리자</h1>
+
+
+
+<div id="login-area">
+
+
+<input 
+type="text"
+id="admin-id"
+placeholder="관리자 아이디">
+
+
+<input 
+type="password"
+id="admin-pw"
+placeholder="비밀번호">
+
+
+<button class="login-btn" onclick="login()">
+로그인
+</button>
+
+
+</div>
+
+
+
+
+
+<div id="admin-area">
+
+
+<h3>승인 대기 메시지</h3>
+
+
+<div id="guest-list">
+
+불러오는 중...
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+const ADMIN_ID = "hshy1226";
+const ADMIN_PW = "20261226";
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbz9dISrJIvW3X5XXlAxpfO-z8lIZylo1Rln8MkEcloT-f3Rd76at_ZAC-6EQy_GcEMjnw/exec";
+
+
+
+function login(){
+
+
+const id =
+document.getElementById("admin-id").value;
+
+
+const pw =
+document.getElementById("admin-pw").value;
+
+
+
+if(id===ADMIN_ID && pw===ADMIN_PW){
+
+
+document.getElementById("login-area")
+.style.display="none";
+
+
+document.getElementById("admin-area")
+.style.display="block";
+
+
+loadGuest();
+
+
+}else{
+
+alert("아이디 또는 비밀번호가 틀렸습니다.");
+
+}
+
+
+}
+
+
+
+
+function loadGuest(){
+
+
+fetch(SCRIPT_URL + "?admin=true")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+
+const list =
+document.getElementById("guest-list");
+
+
+list.innerHTML="";
+
+
+if(data.length===0){
+
+list.innerHTML=
+"승인 대기 글이 없습니다.";
+
+return;
+
+}
+
+
+
+data.forEach(item=>{
+
+
+const div =
+document.createElement("div");
+
+
+div.className="guest-card";
+
+
+div.innerHTML=`
+
+<div class="name">
+${item.name}
+</div>
+
+
+<div class="message">
+${item.message}
+</div>
+
+
+<div class="date">
+${item.date}
+</div>
+
+
+<div class="action">
+
+<button class="approve"
+onclick="approveGuest('${item.row}')">
+승인
+</button>
+
+
+<button class="delete"
+onclick="deleteGuest('${item.row}')">
+삭제
+</button>
+
+
+</div>
+
+`;
+
+
+
+list.appendChild(div);
+
+
+
+});
+
+
+});
+
+
+}
+
+
+
+
+function approveGuest(row){
+
+
+fetch(SCRIPT_URL,{
+method:"POST",
+body:new URLSearchParams({
+
+action:"approve",
+
+row:row
+
+})
+
+})
+.then(()=>{
+
+alert("승인 완료");
+
+loadGuest();
+
+});
+
+
+}
+
+
+
+
+
+function deleteGuest(row){
+
+
+fetch(SCRIPT_URL,{
+method:"POST",
+body:new URLSearchParams({
+
+action:"delete",
+
+row:row
+
+})
+
+})
+.then(()=>{
+
+alert("삭제 완료");
+
+loadGuest();
+
+});
+
+
+}
+
+
+
+</script>
+
+
+</body>
+</html>
