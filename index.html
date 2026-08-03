@@ -110,30 +110,15 @@
         <div class="gallery-item"><img src="images/photo6.jpg.jpg" alt="photo6" onclick="openModal(this.src)" onerror="this.parentNode.style.display='none';"></div>
       </div>
     </section>
-    <section class="content-section location-section">
-      <span class="section-sub">LOCATION</span>
-      <h2 class="section-title">오시는 길</h2>
-      <div class="map-area">
-        <div id="<!-- * 카카오맵 - 지도퍼가기 -->
-<!-- 1. 지도 노드 -->
-<div id="daumRoughmapContainer1785757439114" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+<section class="content-section location-section">
+  <span class="section-sub">LOCATION</span>
+  <h2 class="section-title">오시는 길</h2>
 
-<!--
-	2. 설치 스크립트
-	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
--->
-<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-<!-- 3. 실행 스크립트 -->
-<script charset="UTF-8">
-	new daum.roughmap.Lander({
-		"timestamp" : "1785757439114",
-		"key" : "rxtcefzxtar",
-		"mapWidth" : "640",
-		"mapHeight" : "360"
-	}).render();
-</script>" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+  <div class="map-area">
+      <div id="daumRoughmapContainer1785757439114"
+           class="root_daum_roughmap root_daum_roughmap_landing">
       </div>
+  </div>
       <div class="location-details">
         <h3 class="hall-name">더 누벨</h3>
         <div class="transport-info">
@@ -202,7 +187,17 @@
     <span class="modal-close" onclick="closeModal()">×</span>
     <img class="modal-content" id="modal-img" alt="확대 이미지">
   </div>
-  <script src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-  <script src="script.js"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+<script charset="UTF-8">
+new daum.roughmap.Lander({
+    "timestamp":"1785757439114",
+    "key":"rxtcefzxtar",
+    "mapWidth":"640",
+    "mapHeight":"360"
+}).render();
+</script>
+
+<script src="script.js"></script>
 </body>
 </html>
