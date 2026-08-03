@@ -217,75 +217,45 @@ function submitGuestbook(){
 
 
 // 승인된 방명록 불러오기
-function loadGuestbook(){
+function loadGuestbook() {
 
   const list = document.getElementById("guestbook-list");
 
-  if(!list) return;
-
+  if (!list) return;
 
   fetch(GUESTBOOK_URL)
+    .then(response => response.json())
+    .then(data => {
 
-  .then(response => response.json())
+      list.innerHTML = "";
 
-  .then(data=>{
+      if (data.length === 0) {
+        list.innerHTML = "<p>아직 등록된 축하 메시지가 없습니다.</p>";
+        return;
+      }
 
+      data.forEach(item => {
 
-    list.innerHTML="";
+        const div = document.createElement("div");
 
+        div.className = "guestbook-card";
 
-    if(data.length===0){
+        div.innerHTML = `
+          <p class="guest-name">${item.name}</p>
+          <p class="guest-message">${item.message}</p>
+        `;
 
-      list.innerHTML =
-      "<p>아직 등록된 축하 메시지가 없습니다.</p>";
+        list.appendChild(div);
 
-      return;
+      });
 
-    }
-
-
-    data.forEach(item=>{
-
-
-      const div = document.createElement("div");
-
-
-      div.className="guestbook-card";
-
-
-      div.innerHTML=`
-
-        <p class="guest-name">
-        ${item.name}
-        </p>
-
-        <p class="guest-message">
-        ${item.message}
-        </p>
-
-      `;
-
-
-      list.appendChild(div);
-
-
+    })
+    .catch(error => {
+      console.log(error);
     });
-
-
-  })
-
-  .catch(error=>{
-
-    console.log(error);
-
-  });
 
 }
 
-
-
-document.addEventListener("DOMContentLoaded",function(){
-
+document.addEventListener("DOMContentLoaded", function () {
   loadGuestbook();
-
 });
