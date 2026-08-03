@@ -235,7 +235,7 @@ function loadGuestbook() {
       list.innerHTML = "";
 
       if (data.length === 0) {
-        list.innerHTML = "<p>아직 등록된 축하 메시지가 없습니다.</p>";
+        list.innerHTML = "<p>첫 번째 축하의 마음을 남겨주세요.</p>";
         return;
       }
 
