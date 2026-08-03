@@ -192,9 +192,13 @@ function submitGuestbook(){
   }
 
 
-  fetch(GUESTBOOK_URL,{
-    method:"POST",
-    body:JSON.stringify({
+  fetch(GUESTBOOK_URL)
+    const formData = new FormData();
+
+formData.append("name",name);
+formData.append("message",message);
+
+body:formData
       name:name,
       message:message
     })
@@ -207,6 +211,7 @@ function submitGuestbook(){
     document.getElementById("guest-name").value="";
     document.getElementById("guest-message").value="";
 
+    loadGuestbook();
   })
   .catch(error=>{
     console.log(error);
@@ -224,7 +229,7 @@ function loadGuestbook() {
   if (!list) return;
 
   fetch(GUESTBOOK_URL)
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
 
       list.innerHTML = "";
