@@ -215,3 +215,61 @@ function submitGuestbook(){
   });
 
 }
+// 승인된 방명록 불러오기
+function loadGuestbook(){
+
+  const list = document.getElementById("guestbook-list");
+
+  if(!list) return;
+
+
+  fetch(GUESTBOOK_URL)
+  .then(response => response.json())
+  .then(data => {
+
+    list.innerHTML = "";
+
+
+    if(data.length === 0){
+
+      list.innerHTML = `
+        <div style="padding:30px;color:#999;text-align:center;">
+          💌<br><br>
+          아직 등록된 축하 메시지가 없습니다.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    data.forEach(item=>{
+
+      const div = document.createElement("div");
+
+      div.className = "guestbook-card";
+
+
+      div.innerHTML = `
+        <p class="guest-name">${item.name}</p>
+        <p class="guest-message">${item.message}</p>
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+  })
+  .catch(error=>{
+    console.log(error);
+  });
+
+}
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  loadGuestbook();
+
+});
