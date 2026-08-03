@@ -162,7 +162,7 @@ function renderKakaoMap() {
   if (kakaoMapRendered) return;
   if (typeof daum === "undefined" || !daum.roughmap || !daum.roughmap.Lander) return;
   new daum.roughmap.Lander({
-    timestamp: "1781616731784",
+    timestamp: "1785757439114",
     key: "2r3ni946zwr5",
     mapWidth: "100%",
     mapHeight: "280"
