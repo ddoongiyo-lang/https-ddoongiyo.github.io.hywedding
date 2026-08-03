@@ -173,26 +173,98 @@ function renderKakaoMap() {
 document.addEventListener("DOMContentLoaded", function () {
   renderKakaoMap();
 });
+const GUESTBOOK_URL = "https://script.google.com/macros/s/AKfycbz9dISrJIvW3X5XXlAxpfO-z8lIZylo1Rln8MkEcloT-f3Rd76at_ZAC-6EQy_GcEMjnw/exec";
+
+
+// 방명록 작성
 function submitGuestbook(){
 
-const name =
-document.getElementById("guest-name").value;
+  const name =
+  document.getElementById("guest-name").value.trim();
 
-const message =
-document.getElementById("guest-message").value;
+  const message =
+  document.getElementById("guest-message").value.trim();
 
 
-if(!name || !message){
-alert("이름과 메시지를 입력해주세요.");
-return;
+  if(!name || !message){
+    alert("이름과 축하 메시지를 입력해주세요.");
+    return;
+  }
+
+
+  fetch(GUESTBOOK_URL,{
+    method:"POST",
+    body:JSON.stringify({
+      name:name,
+      message:message
+    })
+  })
+  .then(response => response.json())
+  .then(data=>{
+
+    alert("축하 메시지가 전달되었습니다.\n확인 후 등록됩니다.");
+
+    document.getElementById("guest-name").value="";
+    document.getElementById("guest-message").value="";
+
+  })
+  .catch(error=>{
+    console.log(error);
+    alert("등록 중 오류가 발생했습니다.");
+  });
+
 }
 
 
-// Firebase 저장 예정
+// 승인된 방명록 불러오기
+function loadGuestbook(){
 
-alert("축하 메시지가 전달되었습니다.\n확인 후 등록됩니다.");
+ fetch(GUESTBOOK_URL)
+ .then(response=>response.json())
+ .then(data=>{
 
-document.getElementById("guest-name").value="";
-document.getElementById("guest-message").value="";
+   const list =
+   document.getElementById("guestbook-list");
+
+
+   if(!list) return;
+
+
+   list.innerHTML="";
+
+
+   if(data.length===0){
+
+    list.innerHTML=
+    "<p>아직 등록된 축하 메시지가 없습니다.</p>";
+
+    return;
+
+   }
+
+
+   data.forEach(item=>{
+
+    const div=document.createElement("div");
+
+    div.className="guestbook-card";
+
+
+    div.innerHTML=`
+      <p class="guest-name">${item.name}</p>
+      <p class="guest-message">${item.message}</p>
+    `;
+
+
+    list.appendChild(div);
+
+   });
+
+ });
 
 }
+
+
+document.addEventListener("DOMContentLoaded",function(){
+  loadGuestbook();
+});
