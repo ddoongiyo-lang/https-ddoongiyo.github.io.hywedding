@@ -1,3 +1,4 @@
+console.log("script loaded");
 const WEDDING_YEAR = 2026;
 const WEDDING_MONTH = 12; // 12월
 const WEDDING_DAY = 26;
