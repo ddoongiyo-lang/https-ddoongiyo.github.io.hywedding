@@ -174,7 +174,7 @@ function renderKakaoMap() {
 document.addEventListener("DOMContentLoaded", function () {
   renderKakaoMap();
 });
-const GUESTBOOK_URL = "https://script.google.com/macros/s/AKfycbxK3b86GtPmuH6zcoSWerlwfrKZPsO7nmDYdHdclZyRqEn-IRFk2EYzAZKXKkk8P5ezEQ/exec";
+const GUESTBOOK_URL = "https://script.google.com/macros/s/AKfycbzAYABEGA0wJEAXsEt4g-AoAk5L8IrTCRgXSWsN86voYXhA_BnaUQEZ6ixj85twD8ny8A/exec";
 
 
 function submitGuestbook(){
