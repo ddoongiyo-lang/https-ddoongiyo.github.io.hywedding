@@ -189,17 +189,17 @@ function submitGuestbook(){
   }
 
 
-  fetch(GUESTBOOK_URL, {
-    method: "POST",
-    body: new URLSearchParams({
-      name: name,
-      message: message
-    })
-  })
-  .then(response => response.text())
-  .then(result => {
+  const formData = new FormData();
 
-    console.log(result);
+  formData.append("name", name);
+  formData.append("message", message);
+
+
+  fetch(GUESTBOOK_URL,{
+    method:"POST",
+    body:formData
+  })
+  .then(()=>{
 
     alert("축하 메시지가 전달되었습니다.\n확인 후 등록됩니다.");
 
@@ -207,9 +207,9 @@ function submitGuestbook(){
     document.getElementById("guest-message").value="";
 
   })
-  .catch(error => {
+  .catch(error=>{
 
-    console.error(error);
+    console.log(error);
     alert("등록 중 오류가 발생했습니다.");
 
   });
