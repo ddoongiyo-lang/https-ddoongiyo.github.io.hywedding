@@ -189,26 +189,29 @@ function submitGuestbook(){
   }
 
 
-  const formData = new URLSearchParams();
-
-  formData.append("name", name);
-  formData.append("message", message);
-
-
-  fetch(GUESTBOOK_URL,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/x-www-form-urlencoded"
-    },
-    body:formData
+  fetch(GUESTBOOK_URL, {
+    method: "POST",
+    body: new URLSearchParams({
+      name: name,
+      message: message
+    })
   })
-  .then(response=>{
-    console.log("응답:", response);
+  .then(response => response.text())
+  .then(result => {
+
+    console.log(result);
+
     alert("축하 메시지가 전달되었습니다.\n확인 후 등록됩니다.");
+
+    document.getElementById("guest-name").value="";
+    document.getElementById("guest-message").value="";
+
   })
-  .catch(error=>{
-    console.error("에러:", error);
+  .catch(error => {
+
+    console.error(error);
     alert("등록 중 오류가 발생했습니다.");
+
   });
 
 }
