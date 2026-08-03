@@ -174,7 +174,7 @@ function renderKakaoMap() {
 document.addEventListener("DOMContentLoaded", function () {
   renderKakaoMap();
 });
-const GUESTBOOK_URL = "https://script.google.com/macros/s/AKfycbzAYABEGA0wJEAXsEt4g-AoAk5L8IrTCRgXSWsN86voYXhA_BnaUQEZ6ixj85twD8ny8A/exec";
+const GUESTBOOK_URL = "https://script.google.com/macros/s/AKfycbzlISnqSJ4OxWlXBvMuaHMxjfkJP_BMLp6I3CYy6r0SS53ixbctAjTbScp7hf90z09AWg/exec";
 
 
 function submitGuestbook(){
@@ -235,7 +235,7 @@ function loadGuestbook(){
       list.innerHTML = `
         <div style="padding:30px;color:#999;text-align:center;">
           💌<br><br>
-          아직 등록된 축하 메시지가 없습니다.
+          첫번째 축하 메세지를 남겨주세요.
         </div>
       `;
 
