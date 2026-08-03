@@ -173,3 +173,26 @@ function renderKakaoMap() {
 document.addEventListener("DOMContentLoaded", function () {
   renderKakaoMap();
 });
+function submitGuestbook(){
+
+const name =
+document.getElementById("guest-name").value;
+
+const message =
+document.getElementById("guest-message").value;
+
+
+if(!name || !message){
+alert("이름과 메시지를 입력해주세요.");
+return;
+}
+
+
+// Firebase 저장 예정
+
+alert("축하 메시지가 전달되었습니다.\n확인 후 등록됩니다.");
+
+document.getElementById("guest-name").value="";
+document.getElementById("guest-message").value="";
+
+}
