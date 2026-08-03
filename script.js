@@ -205,8 +205,9 @@ function submitGuestbook(){
 
   fetch(GUESTBOOK_URL,{
     method:"POST",
+    mode:"no-cors",
     body:formData
-  })
+})
   .then(response => response.text())
   .then(data => {
 
