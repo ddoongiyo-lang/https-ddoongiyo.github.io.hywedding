@@ -219,9 +219,16 @@ function submitGuestbook(){
 // 승인된 방명록 불러오기
 function loadGuestbook(){
 
- fetch(GUESTBOOK_URL)
- .then(response=>response.json())
- .then(data=>{
+const formData = new FormData();
+
+formData.append("name", name);
+formData.append("message", message);
+
+
+fetch(GUESTBOOK_URL,{
+  method:"POST",
+  body:formData
+})
 
    const list =
    document.getElementById("guestbook-list");
