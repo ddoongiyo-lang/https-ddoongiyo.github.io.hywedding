@@ -169,3 +169,7 @@ function renderKakaoMap() {
   }).render();
   kakaoMapRendered = true;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  renderKakaoMap();
+});
