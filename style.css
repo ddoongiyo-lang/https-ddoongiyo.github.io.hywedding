@@ -666,3 +666,155 @@ body {
     opacity: 1;
   }
 }
+/* ==========================
+   GUEST BOOK
+========================== */
+
+.guestbook-section{
+    background:#fcfaf7;
+    padding:80px 25px;
+}
+
+.guestbook-form{
+    margin-top:35px;
+}
+
+.guestbook-form input,
+.guestbook-form textarea{
+
+    width:100%;
+    box-sizing:border-box;
+
+    border:none;
+    border-bottom:1px solid #ddd;
+
+    background:transparent;
+
+    padding:15px 5px;
+
+    font-size:15px;
+
+    font-family:'Noto Sans KR';
+
+    outline:none;
+
+    margin-bottom:18px;
+
+    transition:.3s;
+
+}
+
+.guestbook-form input:focus,
+.guestbook-form textarea:focus{
+
+    border-bottom:1px solid #b49b79;
+
+}
+
+.guestbook-form textarea{
+
+    height:120px;
+
+    resize:none;
+
+}
+
+.guestbook-btn{
+
+    width:100%;
+
+    border:none;
+
+    background:#b89a72;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:40px;
+
+    font-size:15px;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.guestbook-btn:hover{
+
+    background:#a8885d;
+
+}
+
+#guestbook-list{
+
+    margin-top:50px;
+
+}
+
+.guestbook-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+
+    animation:fadeUp .5s;
+
+}
+
+.guest-name{
+
+    font-family:'Nanum Myeongjo';
+
+    font-size:18px;
+
+    color:#b28b5b;
+
+    margin-bottom:12px;
+
+}
+
+.guest-name::before{
+
+    content:"💌 ";
+
+}
+
+.guest-message{
+
+    line-height:1.8;
+
+    color:#555;
+
+    white-space:pre-wrap;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
