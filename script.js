@@ -163,7 +163,7 @@ function renderKakaoMap() {
   if (typeof daum === "undefined" || !daum.roughmap || !daum.roughmap.Lander) return;
   new daum.roughmap.Lander({
     timestamp: "1785757439114",
-    key: "2r3ni946zwr5",
+    key: "rxtcefzxtar",
     mapWidth: "100%",
     mapHeight: "280"
   }).render();
