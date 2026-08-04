@@ -273,31 +273,3 @@ document.addEventListener("DOMContentLoaded", function(){
   loadGuestbook();
 
 });
-// ======================
-// 갤러리 자동 생성
-// ======================
-document.addEventListener("DOMContentLoaded", function(){
-
-  const gallery = document.getElementById("gallery");
-
-  if(!gallery) return;
-
-  const photoCount = 25; // 사진 개수
-
-  for(let i = 1; i <= photoCount; i++){
-
-    const div = document.createElement("div");
-    div.className = "gallery-item";
-
-    div.innerHTML = `
-      <img src="images/photo${i}.jpg"
-           alt="photo${i}"
-           onclick="openModal(this.src)"
-           onerror="this.parentNode.style.display='none';">
-    `;
-
-    gallery.appendChild(div);
-
-  }
-
-});
