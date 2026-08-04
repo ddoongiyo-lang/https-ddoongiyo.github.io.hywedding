@@ -148,13 +148,24 @@ function openModal(src){
   if(!modal || !modalImg) return;
 
 
+  // 사진 목록 다시 불러오기
+  modalImages = Array.from(
+    document.querySelectorAll(".gallery-item img")
+  );
+
+
   modalIndex = modalImages.findIndex(
     img => img.src === src
   );
 
 
+  console.log("갤러리 개수:", modalImages.length);
+  console.log("현재 번호:", modalIndex);
+
+
   modal.style.display = "flex";
   modalImg.src = src;
+
 
   updateModalCount();
 
