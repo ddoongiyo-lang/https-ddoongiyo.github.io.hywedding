@@ -830,3 +830,73 @@ body {
     }
 
 }
+/* =====================
+   갤러리 모달 화살표
+===================== */
+
+.modal-prev,
+.modal-next {
+
+  position:absolute;
+
+  top:50%;
+  transform:translateY(-50%);
+
+  width:45px;
+  height:45px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,0.25);
+
+  color:white;
+
+  font-size:28px;
+
+  font-weight:300;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  backdrop-filter:blur(5px);
+
+  transition:.3s;
+
+}
+
+
+.modal-prev:hover,
+.modal-next:hover{
+
+  background:rgba(255,255,255,0.45);
+
+}
+
+
+.modal-prev{
+
+  left:15px;
+
+}
+
+
+.modal-next{
+
+  right:15px;
+
+}
+
+
+/* 사진 넘기는 느낌 */
+.modal-content{
+
+  touch-action:none;
+
+  user-select:none;
+
+}
