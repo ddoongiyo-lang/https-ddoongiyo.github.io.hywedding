@@ -123,18 +123,117 @@ hoursEl.innerText = String(hours).padStart(2, "0");
 minEl.innerText = String(minutes).padStart(2, "0");
 secEl.innerText = String(seconds).padStart(2, "0");
 }
-function openModal(src) {
+// ======================
+// 갤러리 모달 슬라이드
+// ======================
+
+let modalImages = [];
+let modalIndex = 0;
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  modalImages = Array.from(
+    document.querySelectorAll(".gallery-item img")
+  );
+
+});
+
+
+function openModal(src){
+
   const modal = document.getElementById("image-modal");
   const modalImg = document.getElementById("modal-img");
-  if (!modal || !modalImg) return;
+
+  if(!modal || !modalImg) return;
+
+
+  modalIndex = modalImages.findIndex(
+    img => img.src === src
+  );
+
+
   modal.style.display = "flex";
   modalImg.src = src;
+
+  updateModalCount();
+
 }
-function closeModal() {
+
+
+
+function nextModalImage(){
+
+  if(modalImages.length === 0) return;
+
+
+  modalIndex++;
+
+  if(modalIndex >= modalImages.length){
+    modalIndex = 0;
+  }
+
+
+  document.getElementById("modal-img").src =
+    modalImages[modalIndex].src;
+
+
+  updateModalCount();
+
+}
+
+
+
+function prevModalImage(){
+
+  if(modalImages.length === 0) return;
+
+
+  modalIndex--;
+
+  if(modalIndex < 0){
+    modalIndex = modalImages.length - 1;
+  }
+
+
+  document.getElementById("modal-img").src =
+    modalImages[modalIndex].src;
+
+
+  updateModalCount();
+
+}
+
+
+
+function updateModalCount(){
+
+  const count = document.getElementById("modal-count");
+
+  if(count){
+
+    count.innerText =
+      `${modalIndex + 1} / ${modalImages.length}`;
+
+  }
+
+}
+
+
+
+function closeModal(event){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+
   const modal = document.getElementById("image-modal");
-  if (modal) {
+
+  if(modal){
     modal.style.display = "none";
   }
+
 }
 function toggleAccordion(button) {
   const content = button.nextElementSibling;
