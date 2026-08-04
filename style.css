@@ -953,3 +953,46 @@ body {
 .modal-next {
   right:15px;
 }
+/* =================
+   invitation quote
+================= */
+
+.quote-message {
+
+  margin: 35px 0 45px;
+
+  text-align:center;
+
+  color:#4a4740;
+
+}
+
+
+.quote-message p {
+
+  font-family:'Nanum Myeongjo', serif;
+
+  font-size:1.05rem;
+
+  line-height:2;
+
+  letter-spacing:1px;
+
+  font-weight:400;
+
+}
+
+
+.quote-message span {
+
+  display:block;
+
+  margin-top:18px;
+
+  font-size:0.7rem;
+
+  color:#9a9182;
+
+  letter-spacing:1px;
+
+}
